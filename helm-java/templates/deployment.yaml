@@ -15,9 +15,9 @@ spec:
       containers: 
       - name: helm-java
         image: {{.Values.image.ECRLink }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: IfNOtPresent
+        imagePullPolicy: IfNotPresent
         ports: 
         - containerPort: 9000
-          name: http
+          name: "http"
         - containerPort: 5006
           name: "debug"
