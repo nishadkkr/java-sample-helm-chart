@@ -32,6 +32,14 @@ pipeline {
                     }
                 }
             }
+            stage('Helm Push to ECR') {
+                steps {
+                    script {
+                    sh ''
+                    sh ''
+                    }
+                }
+            }
         }
         
     }
