@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Github Connect") {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/p-nishad/simple-maven-app']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url:'https://github.com/p-nishad/java-sample-helm-chart']]])
                 sh 'mvn clean install -DskipTests'
                 
             }
