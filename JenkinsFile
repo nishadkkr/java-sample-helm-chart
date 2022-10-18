@@ -35,7 +35,7 @@ pipeline {
             stage('Helm Push to ECR') {
                 steps {
                     script {
-                    sh 'echo verison : 1.$(BUILD_NUMBER).1 >> helm-java.Chart.yaml'
+                    sh 'echo verison : 1.$(BUILD_NUMBER).1 >> helm-java/Chart.yaml'
                     sh 'helm package helm-java'
                     sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/k3b8b1b7'
                     sh 'helm push helm-java-1.${BUILD_NUMBER}.1.tgz oci://public.ecr.aws/k3b8b1b7'
