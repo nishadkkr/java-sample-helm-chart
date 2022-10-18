@@ -14,7 +14,7 @@ spec:
     spec: 
       containers: 
       - name: helm-java
-        image: {{.Values.image.ECRLink}}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{.Values.image.ECRLink }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: IfNOtPresent
         ports: 
         - containerPort: 9000
