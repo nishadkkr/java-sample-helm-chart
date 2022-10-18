@@ -4,7 +4,7 @@
 image:
   ECRLink: public.ecr.aws/k3b8b1b7
   repository: maven-sample
-  tag: 3
+  tag: 5
   pullPolicy: IfNotPresent
 
 args: []
