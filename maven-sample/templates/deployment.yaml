@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: helm-maven
-  name: helm-maven
+    app: maven-sample
+  name: maven-sample
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: helm-maven
+      app: maven-sample
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: helm-maven
+        app: maven-sample
     spec:
       containers:
       - image: {{ .Values.image }}
-        name: spring-image
+        name: maven-sample
         resources: {}
 status: {}
