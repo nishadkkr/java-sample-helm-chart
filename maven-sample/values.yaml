@@ -1,0 +1,4 @@
+replicaCount: 2
+service:
+  type: NodePort
+image: public.ecr.aws/k3b8b1b7/maven-sample:13
