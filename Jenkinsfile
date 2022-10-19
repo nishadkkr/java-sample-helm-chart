@@ -1,7 +1,7 @@
 pipline {
     agent any
     parameters {
-        string(name :'buildnumber')
+        string(name : 'buildnumber', defaultValue: '', description: 'source')
     }
     
     stages {
