@@ -41,6 +41,13 @@ pipeline {
                     sh 'rm -rf maven-sample-*'
                     }
             }
+            stage('Invoke Build number to Pipeline B') {
+                steps {
+                    script {
+                        build job: 'Pipeline-C', parameters : [[ $class: 'StringParameterValue', name: 'buildnumber', value: "${BUILD_NUMBER}"]]
+                    }
+                }
+            }
         }
         
     }
