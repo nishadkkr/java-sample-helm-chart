@@ -1,5 +1,0 @@
-apiVersion: v2
-name: helm-java
-description: A Helm chart for Kubernetes
-type: application
-appVersion: "1.16.0" 
