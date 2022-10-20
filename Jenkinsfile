@@ -9,7 +9,7 @@ pipline {
             steps {
                 sh 'rm -rf maven-sample'
                 sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/k3b8b1b7'
-                sh 'helm pull oci://public.ecr.aws/k3b8b1b7/maven-sample --version 1.${params.buildnumber}.1 --untar'
+                sh 'helm pull oci://public.ecr.aws/k3b8b1b7/maven-sample --version 1.${params.Environment}.1 --untar'
             }
         }
         stage("Deploy to Minikube") {
