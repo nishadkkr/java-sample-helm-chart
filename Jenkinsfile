@@ -1,7 +1,7 @@
 pipline {
     agent any
     parameters {
-        string(name : 'Environment', defaultValue: 'build', description: 'production')
+        string(name : 'Environment', description: 'production')
     }
     
     stages {
