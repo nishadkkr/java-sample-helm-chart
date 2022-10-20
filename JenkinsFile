@@ -44,7 +44,7 @@ pipeline {
             stage('Invoke Build number to Pipeline B') {
                 steps {
                     script {
-                        build job: 'Pipeline-C', parameters : [[ $class: 'StringParameterValue', name: 'Environment', value: "${BUILD_NUMBER}"]]
+                        build job: 'second', parameters : [[ $class: 'StringParameterValue', name: 'Environment', value: "${BUILD_NUMBER}"]]
                     }
                 }
             }
