@@ -2,4 +2,3 @@ apiVersion: v1
 name: helm-maven
 description: A sample app for Spring boot
 appVersion: 1.1.1 
-
