@@ -20,15 +20,15 @@ pipeline {
             stage('AWS ECR Login') {
             steps {
                 script {
-                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/k3b8b1b7'
+                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/z5n5i3j5'
                 }
             }
         }
             stage('AWS ECR push') {
                 steps {
                     script {
-                    sh 'docker tag maven-sample:latest public.ecr.aws/k3b8b1b7/maven-sample:${BUILD_NUMBER}'
-                    sh 'docker push public.ecr.aws/k3b8b1b7/maven-sample:${BUILD_NUMBER}'
+                    sh 'docker tag maven-sample:latest public.ecr.aws/z5n5i3j5/maven-sample:${BUILD_NUMBER}'
+                    sh 'docker push public.ecr.aws/z5n5i3j5/maven-sample:${BUILD_NUMBER}'
                     }
                 }
             }
@@ -36,8 +36,8 @@ pipeline {
                 steps {
                     sh 'echo version : 1.${BUILD_NUMBER}.1 >> maven-sample/Chart.yaml'
                     sh 'helm package maven-sample'
-                    sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/k3b8b1b7'
-                    sh 'helm push maven-sample-1.${BUILD_NUMBER}.1.tgz oci://public.ecr.aws/k3b8b1b7'
+                    sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/z5n5i3j5'
+                    sh 'helm push maven-sample-1.${BUILD_NUMBER}.1.tgz oci://public.ecr.aws/z5n5i3j5'
                     sh 'rm -rf maven-sample-*'
                     }
             }
