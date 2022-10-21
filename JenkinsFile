@@ -34,11 +34,11 @@ pipeline {
             }
             stage('Helm Push to ECR') {
                 steps {
-                    sh 'echo version : 1.${BUILD_NUMBER}.1 >> maven-sample/Chart.yaml'
-                    sh 'helm package maven-sample'
+                    sh 'echo version : 1.${BUILD_NUMBER}.1 >> helm-chart/Chart.yaml'
+                    sh 'helm package helm-chart'
                     sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/z5n5i3j5'
-                    sh 'helm push maven-sample-1.${BUILD_NUMBER}.1.tgz oci://public.ecr.aws/z5n5i3j5'
-                    sh 'rm -rf maven-sample-*'
+                    sh 'helm push helm-chart-1.${BUILD_NUMBER}.1.tgz oci://public.ecr.aws/z5n5i3j5'
+                    sh 'rm -rf helm-chart-*'
                     }
             }
             stage('Invoke Build number to Pipeline B') {
