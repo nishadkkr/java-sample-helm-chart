@@ -3,16 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: maven-sample
+    app: helm-maven
     app.kubernetes.io/managed-by: Helm
-  name: maven-sample
-spec:
+  name: helm-maven
   type: {{ .Values.service.type }}
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: maven-sample
+    app: helm-maven
 status:
   loadBalancer: {}

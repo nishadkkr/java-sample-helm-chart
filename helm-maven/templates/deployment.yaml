@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: maven-sample
-  name: maven-sample
+    app: helm-maven
+  name: helm-maven
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: maven-sample
+      app: helm-maven
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: maven-sample
+        app: helm-maven
     spec:
       containers:
       - image: {{ .Values.image }}
-        name: maven-sample
+        name: helm-maven
         ports:
         - containerPort: 9000
           name: "http"

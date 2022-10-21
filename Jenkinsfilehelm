@@ -7,14 +7,14 @@ pipline {
     stages {
         stage("Pull from ECR") {
             steps {
-                sh 'rm -rf helm-chart'
+                sh 'rm -rf helm-maven'
                 sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/z5n5i3j5'
-                sh 'helm pull oci://public.ecr.aws/z5n5i3j5/helm-chart --version 1.${params.Environment}.1 --untar'
+                sh 'helm pull oci://public.ecr.aws/z5n5i3j5/helm-maven --version 1.${params.Environment}.1 --untar'
             }
         }
         stage("Deploy to Minikube") {
             steps {
-                sh 'helm install helm-chart helm-chart'
+                sh 'helm install helm-maven helm-maven'
             }
         }
     }
