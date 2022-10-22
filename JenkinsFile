@@ -36,9 +36,8 @@ pipeline {
                 steps {
                     sh 'echo version : 0.${BUILD_NUMBER}.0 >> helm-maven/Chart.yaml'
                     sh 'helm package helm-maven'
-                    sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/z5n5i3j5'
-                    sh 'helm push helm-maven-0.${BUILD_NUMBER}.0.tgz oci://public.ecr.aws/z5n5i3j5/'
-                    sh 'rm -rf helm-maven-*'
+                    sh 'aws ecr get-login-password --region us-west-2 | helm registry login --username AWS --password-stdin 182203249444.dkr.ecr.us-west-2.amazonaws.com'
+                    sh 'helm push helm-maven-0.${BUILD_NUMBER}.0.tgz oci://182203249444.dkr.ecr.us-west-2.amazonaws.com/'
                     }
             }
             stage('Invoke Build number to Pipeline B') {
