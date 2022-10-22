@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name : '${BUILD_NUMBER}',defaultValue: '', description: 'production')
+        string(name : 'buildnum',defaultValue: '', description: 'production')
     }
     
     stages {
@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'rm -rf helm-maven'
                 sh 'aws ecr get-login-password --region us-west-2 | helm registry login --username AWS --password-stdin 182203249444.dkr.ecr.us-west-2.amazonaws.com'
-                sh "helm pull oci://182203249444.dkr.ecr.us-west-2.amazonaws.com/helm-maven --version 0.${BUILD_NUMBER}.0 --untar"
+                sh "helm pull oci://182203249444.dkr.ecr.us-west-2.amazonaws.com/helm-maven --version 0.${params.buildnum}.0 --untar"
             }
         }
         stage("Deploy to Minikube") {
