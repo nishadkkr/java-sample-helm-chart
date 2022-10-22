@@ -8,8 +8,8 @@ pipline {
         stage("Pull from ECR") {
             steps {
                 sh 'rm -rf helm-maven'
-                sh 'aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws/z5n5i3j5'
-                sh 'helm pull oci://public.ecr.aws/z5n5i3j5/helm-maven --version 1.${params.Environment}.1 --untar'
+                sh 'aws ecr get-login-password --region us-west-2 | helm registry login --username AWS --password-stdin 182203249444.dkr.ecr.us-west-2.amazonaws.com'
+                sh 'helm pull oci://182203249444.dkr.ecr.us-west-2.amazonaws.com/helm-maven --version 0.${params.buildnum}.0 --untar'
             }
         }
         stage("Deploy to Minikube") {
