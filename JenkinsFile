@@ -43,7 +43,7 @@ pipeline {
             }
             stage('Invoke Build number to Pipeline B') {
                 steps {
-                    build job: 'second', parameters : [[ $class: 'StringParameterValue', name: 'buildnum', value: "${BUILD_NUMBER}"]]
+                    build job: 'second', parameters : [[ $class: 'StringParameterValue', name: '${BUILD_NUMBER}', value: "${BUILD_NUMBER}"]]
                 }
             }
         }
