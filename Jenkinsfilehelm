@@ -14,7 +14,7 @@ pipeline {
         }
         stage("Deploy to Minikube") {
             steps {
-                sh 'helm install helm-maven helm-maven'
+                sh 'helm upgrade --install helm-maven helm-maven'
             }
         }
     }
