@@ -14,7 +14,7 @@ pipeline {
         }
         stage("Deploy to Minikube") {
             steps {
-                sh 'helm upgrade --install helm-maven helm-maven --KUBECONFIG=/home/ntech/.kube/config'
+                sh 'helm upgrade --install helm-maven helm-maven --kubeconfig=/home/ntech/.kube/config'
             }
         }
     }
